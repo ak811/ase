@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="166eba5c-3d63-4ded-bc87-20c6aeb6a53e" name="Default Changelist" comment="xmls addad to git" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>html</find>
+      <find>snipp</find>
+      <find>کتابخان</find>
+      <find>com.example.searchengine</find>
+      <find>load</find>
+      <find>search() time</find>
+      <find>search</find>
+      <find>search()</find>
+      <find>resultText</find>
+      <find>Toast.m</find>
+      <find>time</find>
+      <find>findVi</find>
+      <find>bindV</find>
+      <find>prob</find>
+      <find>bindView</find>
+      <find>دانشگا</find>
+      <find>getEach</find>
+      <find>correc</find>
+      <find>نتی</find>
+      <find>correct</find>
+      <find>کاهدان</find>
+      <find>//////////////////////////////////////////////////////////////////////</find>
+      <find>تهران</find>
+      <find>ثانی</find>
+      <find>perfor</find>
+      <find>نتیجه ای</find>
+      <find>Toast.make</find>
+      <find>hellllloooo</find>
+      <find>StringUtils</find>
+      <find>convert</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2Co6noC7dd7QoUHBi3hic8k0EWT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_4_XL_API_26" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2022-08-02T16:52:01.187Z" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ToolWindowRun.ShowToolbar" value="false" />
+    <property name="android-custom-viewD:/Projects/_Me/_YazdUniversity/SearchEngine/Android/SearchEngineApp/app/src/main/java/com/example/searchengine/ui/IranYekanButton.java_SELECTED" value="IranYekanButton" />
+    <property name="android-custom-viewD:/Projects/_Me/_YazdUniversity/SearchEngine/Android/SearchEngineApp/app/src/main/java/com/example/searchengine/ui/IranYekanEditText.java_SELECTED" value="IranYekanEditText" />
+    <property name="android-custom-viewD:/Projects/_Me/_YazdUniversity/SearchEngine/Android/SearchEngineApp/app/src/main/java/com/example/searchengine/ui/IranYekanTextView.java_SELECTED" value="IranYekanTextView" />
+    <property name="android.sdk.path" value="C:/AndroidSdk" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="multi-representation-previewD:/Projects/_Me/_YazdUniversity/SearchEngine/Android/SearchEngineApp/app/src/main/java/com/example/searchengine/ui/IranYekanButton.java_selected" value="Custom views" />
+    <property name="multi-representation-previewD:/Projects/_Me/_YazdUniversity/SearchEngine/Android/SearchEngineApp/app/src/main/java/com/example/searchengine/ui/IranYekanEditText.java_selected" value="Custom views" />
+    <property name="multi-representation-previewD:/Projects/_Me/_YazdUniversity/SearchEngine/Android/SearchEngineApp/app/src/main/java/com/example/searchengine/ui/IranYekanTextView.java_selected" value="Custom views" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="MODULE_TAB" value="Properties" />
+    <option name="BUILD_VARIANTS_TAB" value="Build Types" />
+    <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\Android\Me\1398\SearchEngine\app\src\main\java\com\example\searchengine\files" />
+      <recent name="D:\Projects\Android\Me\1398\SearchEngine\app\src\main\java\com\example\searchengine" />
+      <recent name="D:\Projects\Android\Me\1398\SearchEngine\app\src\main\java\com\example\search_engine" />
+      <recent name="D:\Projects\Android\Me\1398\SearchEngine\app\src\main\java\com\example\search_engine\files" />
+      <recent name="D:\Projects\Android\Me\1398\SearchEngine\app\src\main\java\com\example\search_engine\utils" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.searchengine.utils" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projects\Android\Me\1398\SearchEngine\app\src\main\java\com\example\searchengine\utils" />
+      <recent name="D:\Projects\Android\Me\1398\SearchEngine\app\src\main\res\layout" />
+      <recent name="D:\Projects\Android\Me\1398\SearchEngine\app\src\main\assets" />
+      <recent name="D:\Projects\Android\Me\1398\SearchEngine\app\src\main\java\com\example\searchengine" />
+      <recent name="D:\Projects\Android\Me\1398\SearchEngine\app" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Android App.app">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainActivity" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
+      <module name="SE.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="specific_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="com.example.searchengine.MainActivity" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="SE.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.search_engine.App" />
+      <module name="SE.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.searchengine.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Indexer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.searchengine.Indexer" />
+      <module name="SE.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.searchengine.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.searchengine.utils.Test" />
+      <module name="SE.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.searchengine.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.searchengine.Test" />
+      <module name="SE.app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.searchengine.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.search_engine.utils.Test" />
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.searchengine.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="commons-text-1.8.jar" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/app/libs/commons-text-1.8.jar" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
+    <configuration name="junit-4.13-rc-1-sources.jar" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/app/libs/junit-4.13-rc-1-sources.jar" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
+    <configuration name="junit-4.13-rc-1.jar" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/app/libs/junit-4.13-rc-1.jar" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Android App.MainActivity" />
+        <item itemvalue="Application.Test (1)" />
+        <item itemvalue="Application.Indexer" />
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="166eba5c-3d63-4ded-bc87-20c6aeb6a53e" name="Default Changelist" comment="" />
+      <created>1573749649773</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573749649773</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1574270348078</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574270348079</updated>
+    </task>
+    <task id="LOCAL-00002" summary="spell checking completed. but not tested.">
+      <created>1575945105179</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1575945105179</updated>
+    </task>
+    <task id="LOCAL-00003" summary="in the process of handling out of memory error on android.">
+      <created>1576012845237</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1576012845237</updated>
+    </task>
+    <task id="LOCAL-00004" summary="some changes occurred">
+      <created>1576312292453</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1576312292453</updated>
+    </task>
+    <task id="LOCAL-00005" summary="xmls addad to git">
+      <created>1576312910318</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1576312910318</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="spell checking completed. but not tested." />
+    <MESSAGE value="in the process of handling out of memory error on android." />
+    <MESSAGE value="some changes occurred" />
+    <MESSAGE value="xmls addad to git" />
+    <option name="LAST_COMMIT_MESSAGE" value="xmls addad to git" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="342" y="20" key="CommitChangelistDialog2" timestamp="1659460783807">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="342" y="20" key="CommitChangelistDialog2/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659460783807" />
+    <state x="647" y="330" key="Github.ShareDialog" timestamp="1659461086459">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="647" y="330" key="Github.ShareDialog/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659461086459" />
+    <state width="1491" height="223" key="GridCell.Tab.0.bottom" timestamp="1659459689428">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1491" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659459689428" />
+    <state width="1491" height="223" key="GridCell.Tab.0.center" timestamp="1659459689427">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1491" height="223" key="GridCell.Tab.0.center/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659459689427" />
+    <state width="1491" height="223" key="GridCell.Tab.0.left" timestamp="1659459689427">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1491" height="223" key="GridCell.Tab.0.left/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659459689427" />
+    <state width="1491" height="223" key="GridCell.Tab.0.right" timestamp="1659459689428">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1491" height="223" key="GridCell.Tab.0.right/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659459689428" />
+    <state x="277" y="77" key="SettingsEditor" timestamp="1659461119437">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="277" y="77" key="SettingsEditor/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659461119437" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1659460832376">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659460832376" />
+  </component>
+</project>
