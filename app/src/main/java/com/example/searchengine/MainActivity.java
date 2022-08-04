@@ -17,11 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.searchengine.ui.IranYekanTextView;
 import com.example.searchengine.utils.Constants;
 import com.example.searchengine.utils.RecyclerViewAdapter;
@@ -35,12 +30,21 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import static com.example.searchengine.utils.Constants.MAIN_ACTIVITY_STR;
+import static com.example.searchengine.utils.Constants.PERSIAN_CHARACTERS;
+import static com.example.searchengine.utils.Constants.SPACE_CHARACTER;
+import static com.example.searchengine.utils.Constants.ZERO;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 @SuppressLint("UseSparseArrays")
@@ -66,18 +70,13 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
 
-    private HashMap<String, List<DocIdWithFrequency>> invertedIndexingHashMap = new HashMap<>();
+    private HashMap<String, List<DocIdWithFrequency>> invertedindexHashMap = new HashMap<>();
     private HashMap<Integer, Doc> documentsHashMap = new HashMap<>();
     private HashMap<String, HashSet<String>> dictionaryHashMap = new HashMap<>();
 
     private ArrayList<Doc> resultDocs = new ArrayList<>();
 
     private String newCorrectedQuery;
-
-    private List<Character> persianCharacters = Arrays.asList(
-            'آ', 'ا', 'ب', 'پ', 'ت', 'ث', 'ج', 'چ', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'ژ', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ',
-            'ع', 'غ', 'ف', 'ق', 'ک', 'گ', 'ل', 'م', 'ن', 'و', 'ه', 'ی', 'ك', 'ي'
-    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,18 +88,18 @@ public class MainActivity extends AppCompatActivity {
         initListeners();
 
         long startTime = System.currentTimeMillis();
-        invertedIndexingHashMap = extractMapFromInvertedIndexingFile();
+        invertedindexHashMap = extractMapFromInvertedIndexFile();
         documentsHashMap = extractMapFromDocumentsFile();
-        Toast.makeText(this, "loadHashMapsFromFile time: " + (System.currentTimeMillis() - startTime) + "ms", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, Constants.LOAD_HASH_MAPS_FROM_FILE_TIME_MSG + (System.currentTimeMillis() - startTime), Toast.LENGTH_LONG).show();
 
         startTime = System.currentTimeMillis();
         try {
-            fillDictionaryHashMap(invertedIndexingHashMap);
+            fillDictionaryHashMap(invertedindexHashMap);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Toast.makeText(this, "fillDictionaryHashMap time: " + (System.currentTimeMillis() - startTime) + "ms", Toast.LENGTH_LONG).show();
-        Toast.makeText(this, "I'm ready!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, Constants.FILL_DICTIONARY_HASH_MAP_TIME_MSG + (System.currentTimeMillis() - startTime), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, Constants.READY_MSG, Toast.LENGTH_LONG).show();
     }
 
     private void bindViews() {
@@ -136,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         goBackImageView.setOnClickListener(view -> onBackPressed());
-        closeImageView.setOnClickListener(view -> searchContentEditText.setText(""));
+        closeImageView.setOnClickListener(view -> searchContentEditText.setText(Constants.EMPTY_STR));
 
         searchContentEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -161,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
         homeButtonImageView.setOnClickListener(v -> {
             hideWebViewAndShowOthers();
-            progressBar.setProgress(0);
+            progressBar.setProgress(Constants.ZERO);
             progressBar.setVisibility(View.INVISIBLE);
             openKeyboard();
         });
@@ -176,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
             hideKeyboard();
             showWebViewAndHideOthers();
         } else {
-            Toast.makeText(this, "فیلد خالی است.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, Constants.FILED_IS_EMPTY_MSG, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -197,12 +196,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         String[] subQueries = query.split(" ");
-        if (invertedIndexingHashMap != null && documentsHashMap != null &&
+        if (invertedindexHashMap != null && documentsHashMap != null &&
                 subQueries.length != 0 && !subQueries[0].trim().equals("")) {
-            List<DocIdWithFrequency> commonDocIdsWithFrequency = invertedIndexingHashMap.get(subQueries[0]);
+            List<DocIdWithFrequency> commonDocIdsWithFrequency = invertedindexHashMap.get(subQueries[0]);
             if (commonDocIdsWithFrequency != null) {
                 for (int i = 1; i < subQueries.length; i++) {
-                    List<DocIdWithFrequency> list2 = invertedIndexingHashMap.get(subQueries[i]);
+                    List<DocIdWithFrequency> list2 = invertedindexHashMap.get(subQueries[i]);
                     commonDocIdsWithFrequency = extractCommonList(commonDocIdsWithFrequency, list2);
                 }
 
@@ -323,9 +322,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (vpnDialogFlag) {
             vpnDialogFlag = false;
-        } /*else if (recyclerView.canGoBack()) {
-
-        } */ else {
+        }  else {
             if (recyclerView.getVisibility() == View.INVISIBLE) {
                 if (!onBackPressedFlag) {
                     onBackPressedFlag = true;
@@ -343,8 +340,6 @@ public class MainActivity extends AppCompatActivity {
             infoTextView.setText("");
         }
     }
-
-    /******************************************************************************************/
 
     private List<DocIdWithFrequency> extractCommonList(
             List<DocIdWithFrequency> list, List<DocIdWithFrequency> list2) {
@@ -368,11 +363,11 @@ public class MainActivity extends AppCompatActivity {
     private String correctQuerySpelling(String query) {
         boolean isAnySubQueryCorrected = false;
         StringBuilder correctedQuery = new StringBuilder();
-        String[] subQueries = query.split(" ");
+        String[] subQueries = query.split(SPACE_CHARACTER);
         for (String subQuery : subQueries) {
-            if (invertedIndexingHashMap.get(subQuery) == null) {
+            if (invertedindexHashMap.get(subQuery) == null) {
                 String newStr = replaceSimilarLetters(subQuery);
-                System.out.println("corrected query: " + newStr);
+                Log.i(MAIN_ACTIVITY_STR, Constants.CORRECTED_QUERY_STR + newStr);
                 newCorrectedQuery = newStr;
                 if (newStr == null) {
                     HashMap<String, Double> probabilityHashMap = new HashMap<>();
@@ -394,19 +389,16 @@ public class MainActivity extends AppCompatActivity {
                             .sorted((t1, t2) -> t2.getValue().compareTo(t1.getValue()))
                             .forEach(System.out::println);
 
-
-                    System.out.println("//////////////////////////////////////////////////////////////////////");
-
                     if (max.isPresent()) {
                         Map.Entry<String, Double> maxEntry = max.get();
-                        correctedQuery.append(maxEntry.getKey()).append(" ");
+                        correctedQuery.append(maxEntry.getKey()).append(SPACE_CHARACTER);
                     }
                 } else {
-                    correctedQuery.append(newStr).append(" ");
+                    correctedQuery.append(newStr).append(SPACE_CHARACTER);
                 }
                 isAnySubQueryCorrected = true;
             } else {
-                correctedQuery.append(subQuery).append(" ");
+                correctedQuery.append(subQuery).append(SPACE_CHARACTER);
             }
         }
         if (isAnySubQueryCorrected)
@@ -415,22 +407,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String replaceSimilarLetters(String hashSetStr) {
-        HashMap<Character, Character> hashMap = new HashMap<>();
-        hashMap.put('ک', 'گ');
-        hashMap.put('د', 'ذ');
-        hashMap.put('ر', 'ز');
-        hashMap.put('ذ', 'ز');
-        hashMap.put('ب', 'پ');
-        hashMap.put('ح', 'خ');
-        hashMap.put('ی', 'ي');
-        hashMap.put('ك', 'ک');
-        for (HashMap.Entry<Character, Character> hashEntry : hashMap.entrySet()) {
-            if (invertedIndexingHashMap.get(hashSetStr.replace(hashEntry.getKey(),
+        for (HashMap.Entry<Character, Character> hashEntry : Constants.SIMILAR_PERSIAN_CHARACTERS.entrySet()) {
+            if (invertedindexHashMap.get(hashSetStr.replace(hashEntry.getKey(),
                     hashEntry.getValue())) != null ||
-                    invertedIndexingHashMap.get(hashSetStr.replace(hashEntry.getValue(),
+                    invertedindexHashMap.get(hashSetStr.replace(hashEntry.getValue(),
                             hashEntry.getKey())) != null) {
 
-                if (invertedIndexingHashMap.get(hashSetStr.replace(hashEntry.getKey(),
+                if (invertedindexHashMap.get(hashSetStr.replace(hashEntry.getKey(),
                         hashEntry.getValue())) != null) {
                     hashSetStr = hashSetStr.replace(hashEntry.getKey(), hashEntry.getValue());
                 } else {
@@ -458,7 +441,7 @@ public class MainActivity extends AppCompatActivity {
         wordBbiGramArray = deleteDuplicates(wordBbiGramArray);
         queryBiGramArray = deleteDuplicates(queryBiGramArray);
 
-        // the smaller array must iterate first
+        // >>> The smaller array must be iterated first.
         if (wordBbiGramArray.length > queryBiGramArray.length) {
             String[] temp = wordBbiGramArray;
             wordBbiGramArray = queryBiGramArray;
@@ -475,7 +458,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         double prob = commonCount / (double) (wordBbiGramArray.length + queryBiGramArray.length - commonCount);
-//        System.out.println("word: " + word + " // " + "prob: " + prob);
         probabilityHashMap.put(word, prob);
     }
 
@@ -492,18 +474,16 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    private void fillDictionaryHashMap(HashMap<String, List<DocIdWithFrequency>> invertedIndexingHashMap)
+    private void fillDictionaryHashMap(HashMap<String, List<DocIdWithFrequency>> invertedindexHashMap)
             throws IOException {
-        for (int i = 0; i < persianCharacters.size(); i++) {
-            for (int j = 0; j < persianCharacters.size(); j++) {
+        for (int i = 0; i < PERSIAN_CHARACTERS.size(); i++)
+            for (int j = 0; j < PERSIAN_CHARACTERS.size(); j++)
                 dictionaryHashMap.put(
-                        String.valueOf(persianCharacters.get(i)) +
-                                persianCharacters.get(j), new HashSet<>());
-            }
-        }
+                        String.valueOf(PERSIAN_CHARACTERS.get(i)) +
+                                PERSIAN_CHARACTERS.get(j), new HashSet<>());
 
-        // fill dic from inverted indexing
-        for (Map.Entry<String, List<DocIdWithFrequency>> mapEntry : invertedIndexingHashMap.entrySet()) {
+        // >>> Fill dictionary from inverted_index.txt*
+        for (Map.Entry<String, List<DocIdWithFrequency>> mapEntry : invertedindexHashMap.entrySet()) {
             String key = mapEntry.getKey();
             for (int i = 0; i < key.length(); i++) {
                 for (int j = i + 1; j < key.length(); j++) {
@@ -515,9 +495,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // fill dic from dictionary.txt
-        String DICTIONARY_FILE_PATH = "dictionary.txt";
-        InputStream inputStream = getAssets().open(DICTIONARY_FILE_PATH);
+        // >>> Fill dictionary from dictionary.txt
+        InputStream inputStream = getAssets().open(Constants.DICTIONARY_FILE_PATH);
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             while (reader.ready()) {
                 String word = reader.readLine();
@@ -533,14 +512,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private HashMap<String, List<DocIdWithFrequency>> extractMapFromInvertedIndexingFile() {
-        System.out.println("start extractMapFromInvertedIndexingFile");
-        try (InputStream inputStream = getAssets().open("inverted_indexing.txt");
+    private HashMap<String, List<DocIdWithFrequency>> extractMapFromInvertedIndexFile() {
+        try (InputStream inputStream = getAssets().open(Constants.INVERTED_INDEX_FILE_PATH);
              ObjectInputStream objectInputStream = new ObjectInputStream(inputStream)) {
-            HashMap<String, List<DocIdWithFrequency>> hashMap =
-                    (HashMap<String, List<DocIdWithFrequency>>) objectInputStream.readObject();
-            System.out.println("end extractMapFromInvertedIndexingFile");
-            return hashMap;
+            return (HashMap<String, List<DocIdWithFrequency>>) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -548,11 +523,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private HashMap<Integer, Doc> extractMapFromDocumentsFile() {
-        try (InputStream inputStream = getAssets().open("documents.txt");
+        try (InputStream inputStream = getAssets().open(Constants.DOCUMENTS_FILE_PATH);
              ObjectInputStream objectInputStream = new ObjectInputStream(inputStream)) {
-            HashMap<Integer, Doc> hashMap = (HashMap<Integer, Doc>) objectInputStream.readObject();
-            System.out.println("end extractMapFromDocumentsFile");
-            return hashMap;
+            return (HashMap<Integer, Doc>) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -562,20 +535,20 @@ public class MainActivity extends AppCompatActivity {
     private String formatNumber(int number) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < 3 - String.valueOf(number).length(); i++) {
-            stringBuilder.append("0");
+            stringBuilder.append(ZERO);
         }
         return stringBuilder.append(number).toString();
     }
 
     @Test
     public void testFormatNumberFunction() {
-        Assert.assertEquals(formatNumber(1), "001");
-        Assert.assertEquals(formatNumber(2), "002");
+        Assert.assertEquals(formatNumber(Constants.TEST_INPUT_1), Constants.TEST_ACTUAL_INPUT_1);
+        Assert.assertEquals(formatNumber(Constants.TEST_INPUT_2), Constants.TEST_ACTUAL_INPUT_2);
 
-        Assert.assertEquals(formatNumber(10), "010");
+        Assert.assertEquals(formatNumber(Constants.TEST_INPUT_3), Constants.TEST_ACTUAL_INPUT_3);
 
-        Assert.assertEquals(formatNumber(100), "100");
+        Assert.assertEquals(formatNumber(Constants.TEST_INPUT_4), Constants.TEST_ACTUAL_INPUT_4);
 
-        Assert.assertNotEquals(formatNumber(10), "10");
+        Assert.assertNotEquals(formatNumber(Constants.TEST_INPUT_5), Constants.TEST_ACTUAL_INPUT_5);
     }
 }

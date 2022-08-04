@@ -24,7 +24,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="166eba5c-3d63-4ded-bc87-20c6aeb6a53e" name="Default Changelist" comment="xmls addad to git" />
+    <list default="true" id="166eba5c-3d63-4ded-bc87-20c6aeb6a53e" name="Default Changelist" comment="xmls addad to git">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/Indexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/Indexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/utils/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,40 +59,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>html</find>
-      <find>snipp</find>
-      <find>کتابخان</find>
-      <find>com.example.searchengine</find>
-      <find>load</find>
-      <find>search() time</find>
-      <find>search</find>
-      <find>search()</find>
-      <find>resultText</find>
-      <find>Toast.m</find>
-      <find>time</find>
-      <find>findVi</find>
-      <find>bindV</find>
-      <find>prob</find>
-      <find>bindView</find>
-      <find>دانشگا</find>
-      <find>getEach</find>
-      <find>correc</find>
-      <find>نتی</find>
-      <find>correct</find>
-      <find>کاهدان</find>
-      <find>//////////////////////////////////////////////////////////////////////</find>
-      <find>تهران</find>
-      <find>ثانی</find>
-      <find>perfor</find>
-      <find>نتیجه ای</find>
-      <find>Toast.make</find>
-      <find>hellllloooo</find>
-      <find>StringUtils</find>
-      <find>convert</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -101,16 +76,16 @@
     <property name="android-custom-viewD:/Projects/_Me/_YazdUniversity/SearchEngine/Android/SearchEngineApp/app/src/main/java/com/example/searchengine/ui/IranYekanButton.java_SELECTED" value="IranYekanButton" />
     <property name="android-custom-viewD:/Projects/_Me/_YazdUniversity/SearchEngine/Android/SearchEngineApp/app/src/main/java/com/example/searchengine/ui/IranYekanEditText.java_SELECTED" value="IranYekanEditText" />
     <property name="android-custom-viewD:/Projects/_Me/_YazdUniversity/SearchEngine/Android/SearchEngineApp/app/src/main/java/com/example/searchengine/ui/IranYekanTextView.java_SELECTED" value="IranYekanTextView" />
-    <property name="android.sdk.path" value="C:/AndroidSdk" />
+    <property name="android.sdk.path" value="$PROJECT_DIR$/../../../../../../Softwares/Windows/Programming/AndroidSDK/Sdk" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="multi-representation-previewD:/Projects/_Me/_YazdUniversity/SearchEngine/Android/SearchEngineApp/app/src/main/java/com/example/searchengine/ui/IranYekanButton.java_selected" value="Custom views" />
     <property name="multi-representation-previewD:/Projects/_Me/_YazdUniversity/SearchEngine/Android/SearchEngineApp/app/src/main/java/com/example/searchengine/ui/IranYekanEditText.java_selected" value="Custom views" />
     <property name="multi-representation-previewD:/Projects/_Me/_YazdUniversity/SearchEngine/Android/SearchEngineApp/app/src/main/java/com/example/searchengine/ui/IranYekanTextView.java_selected" value="Custom views" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Properties" />
@@ -422,14 +397,22 @@
     <option name="LAST_COMMIT_MESSAGE" value="xmls addad to git" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="286" y="178" key="#PSD" timestamp="1659639397980">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="286" y="178" key="#PSD/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659639397980" />
     <state x="342" y="20" key="CommitChangelistDialog2" timestamp="1659460783807">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="342" y="20" key="CommitChangelistDialog2/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659460783807" />
-    <state x="647" y="330" key="Github.ShareDialog" timestamp="1659461086459">
+    <state x="647" y="330" key="Github.ShareDialog" timestamp="1659461163441">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="647" y="330" key="Github.ShareDialog/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659461086459" />
+    <state x="647" y="330" key="Github.ShareDialog/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659461163441" />
+    <state x="459" y="131" key="Github.UntrackedFilesDialog" timestamp="1659461306083">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="459" y="131" key="Github.UntrackedFilesDialog/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659461306083" />
     <state width="1491" height="223" key="GridCell.Tab.0.bottom" timestamp="1659459689428">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -446,13 +429,17 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1491" height="223" key="GridCell.Tab.0.right/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659459689428" />
-    <state x="277" y="77" key="SettingsEditor" timestamp="1659461119437">
+    <state x="277" y="77" key="SettingsEditor" timestamp="1659639368426">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="277" y="77" key="SettingsEditor/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659461119437" />
+    <state x="277" y="77" key="SettingsEditor/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659639368426" />
     <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1659460832376">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659460832376" />
+    <state x="475" y="165" width="586" height="592" key="find.popup" timestamp="1659638518039">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="475" y="165" width="586" height="592" key="find.popup/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659638518039" />
   </component>
 </project>

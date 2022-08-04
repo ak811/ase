@@ -1,7 +1,5 @@
 package com.example.searchengine;
 
-import android.os.Build;
-
 
 import org.apache.commons.text.StringEscapeUtils;
 import org.jdom2.Document;
@@ -21,7 +19,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Indexer {
-    private static HashMap<String, List<DocIdWithFrequency>> invertedIndexingHashMap = new HashMap<>();
+    private static HashMap<String, List<DocIdWithFrequency>> invertedindexHashMap = new HashMap<>();
     private static HashMap<Integer, Doc> documentsHashMap = new HashMap<>();
 
     private static String XMLsPath = "D:\\Projects\\" +
@@ -32,7 +30,7 @@ public class Indexer {
 
     private static int BAD_DOCUMENT_ID = 485;
 
-    private static String invertedIndexingFilePath = "D:\\Projects\\Android\\Me\\1398\\SearchEngine\\app\\src\\main\\assets\\inverted_indexing.txt";
+    private static String invertedIndexFilePath = "D:\\Projects\\Android\\Me\\1398\\SearchEngine\\app\\src\\main\\assets\\inverted_index.txt";
     private static String documentsFilePath = "D:\\Projects\\Android\\Me\\1398\\SearchEngine\\app\\src\\main\\assets\\documents.txt";
 
     public static void main(String[] args) {
@@ -43,8 +41,8 @@ public class Indexer {
         }
 
         long startTime = System.currentTimeMillis();
-        saveInvertedIndexingHashMapToFile();
-        System.out.println("saveInvertedIndexingHashMapToFile time: " + (System.currentTimeMillis() - startTime));
+        saveInvertedIndexHashMapToFile();
+        System.out.println("saveInvertedIndexHashMapToFile time: " + (System.currentTimeMillis() - startTime));
         startTime = System.currentTimeMillis();
         saveDocumentsHashMapToFile();
         System.out.println("saveDocumentsHashMapToFile time: " + (System.currentTimeMillis() - startTime));
@@ -84,18 +82,18 @@ public class Indexer {
                         wordsCount++;
                         lettersCount += word.length();
 
-                        if (invertedIndexingHashMap.get(word) == null) {
+                        if (invertedindexHashMap.get(word) == null) {
                             List<DocIdWithFrequency> docIdWithFrequencies = new ArrayList<>();
                             DocIdWithFrequency docIdWithFrequency = new DocIdWithFrequency(doc.getId(), bodyWeight);
                             docIdWithFrequencies.add(docIdWithFrequency);
-                            invertedIndexingHashMap.put(word, docIdWithFrequencies);
+                            invertedindexHashMap.put(word, docIdWithFrequencies);
                         } else {
-                            List<DocIdWithFrequency> docIdWithFrequencies = invertedIndexingHashMap.get(word);
+                            List<DocIdWithFrequency> docIdWithFrequencies = invertedindexHashMap.get(word);
                             if (docIdWithFrequencies != null)
                                 if (!isDocIdWithScoreExists(doc.getId(), docIdWithFrequencies)) {
                                     DocIdWithFrequency docIdWithFrequency = new DocIdWithFrequency(doc.getId(), bodyWeight);
                                     docIdWithFrequencies.add(docIdWithFrequency);
-                                    invertedIndexingHashMap.put(word, docIdWithFrequencies);
+                                    invertedindexHashMap.put(word, docIdWithFrequencies);
                                 } else {
                                     for (int k = 0; k < docIdWithFrequencies.size(); k++) {
                                         if (docIdWithFrequencies.get(k).getDocId() == doc.getId()) {
@@ -119,18 +117,18 @@ public class Indexer {
                             wordsCount++;
                             lettersCount += word.length();
 
-                            if (invertedIndexingHashMap.get(word) == null) {
+                            if (invertedindexHashMap.get(word) == null) {
                                 List<DocIdWithFrequency> docIdWithFrequencies = new ArrayList<>();
                                 DocIdWithFrequency docIdWithFrequency = new DocIdWithFrequency(doc.getId(), titleWeight);
                                 docIdWithFrequencies.add(docIdWithFrequency);
-                                invertedIndexingHashMap.put(word, docIdWithFrequencies);
+                                invertedindexHashMap.put(word, docIdWithFrequencies);
                             } else {
-                                List<DocIdWithFrequency> docIdWithFrequencies = invertedIndexingHashMap.get(word);
+                                List<DocIdWithFrequency> docIdWithFrequencies = invertedindexHashMap.get(word);
                                 if (docIdWithFrequencies != null)
                                     if (!isDocIdWithScoreExists(doc.getId(), docIdWithFrequencies)) {
                                         DocIdWithFrequency docIdWithFrequency = new DocIdWithFrequency(doc.getId(), titleWeight);
                                         docIdWithFrequencies.add(docIdWithFrequency);
-                                        invertedIndexingHashMap.put(word, docIdWithFrequencies);
+                                        invertedindexHashMap.put(word, docIdWithFrequencies);
                                     } else {
                                         for (int k = 0; k < docIdWithFrequencies.size(); k++) {
                                             if (docIdWithFrequencies.get(k).getDocId() == doc.getId()) {
@@ -154,10 +152,10 @@ public class Indexer {
         System.out.println("documentsCount= " + documentsCount);
         System.out.println("wordsCount= " + wordsCount);
         System.out.println("lettersCount= " + lettersCount);
-        System.out.println("invertedIndexingHashMap.size(): " + invertedIndexingHashMap.size());
+        System.out.println("invertedindexHashMap.size(): " + invertedindexHashMap.size());
 
         startTime = System.currentTimeMillis();
-        for (HashMap.Entry<String, List<DocIdWithFrequency>> entry : invertedIndexingHashMap.entrySet()) {
+        for (HashMap.Entry<String, List<DocIdWithFrequency>> entry : invertedindexHashMap.entrySet()) {
             List<DocIdWithFrequency> list = entry.getValue();
             for (int i = 0; i < list.size(); i++) {
                 DocIdWithFrequency docIdWithFrequency = list.get(i);
@@ -169,7 +167,7 @@ public class Indexer {
                 }
             }
         }
-        System.out.println("indexing time: " + (System.currentTimeMillis() - startTime));
+        System.out.println("index time: " + (System.currentTimeMillis() - startTime));
     }
 
     private static void saveDocumentsHashMapToFile() {
@@ -185,13 +183,13 @@ public class Indexer {
         System.out.println("end saveDocumentsHashMapToFile");
     }
 
-    private static void saveInvertedIndexingHashMapToFile() {
-        System.out.println("start saveInvertedIndexingHashMapToFile");
-        File file = new File(invertedIndexingFilePath);
+    private static void saveInvertedIndexHashMapToFile() {
+        System.out.println("start saveInvertedindexHashMapToFile");
+        File file = new File(invertedIndexFilePath);
         try (FileOutputStream fileOutputStream = new FileOutputStream(file);
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
-            objectOutputStream.writeObject(invertedIndexingHashMap);
-            System.out.println("end saveInvertedIndexingHashMapToFile\n");
+            objectOutputStream.writeObject(invertedindexHashMap);
+            System.out.println("end saveInvertedindexHashMapToFile\n");
         } catch (IOException e) {
             System.out.println("catch");
             e.printStackTrace();

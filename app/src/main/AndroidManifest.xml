@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:largeHeap="true"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppindexWarning">
         <activity android:name="com.example.searchengine.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
