@@ -24,7 +24,6 @@ public class Indexer {
 
     private static String XMLsPath = "D:\\Projects\\" +
             "Android\\Me\\1398\\SearchEngine\\app\\src\\main\\assets\\WEBIR_S";
-    private static final String DICTIONARY_FILE_PATH = "dictionary.txt";
 
     private static int uniqueId;
 

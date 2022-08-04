@@ -41,9 +41,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static com.example.searchengine.utils.Constants.ELLIPSIS_STR;
+import static com.example.searchengine.utils.Constants.EMPTY_STR;
+import static com.example.searchengine.utils.Constants.HUNDRED;
 import static com.example.searchengine.utils.Constants.MAIN_ACTIVITY_STR;
+import static com.example.searchengine.utils.Constants.ONE;
 import static com.example.searchengine.utils.Constants.PERSIAN_CHARACTERS;
+import static com.example.searchengine.utils.Constants.SECONDS_MSG;
 import static com.example.searchengine.utils.Constants.SPACE_CHARACTER;
+import static com.example.searchengine.utils.Constants.THOUSAND;
 import static com.example.searchengine.utils.Constants.ZERO;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
@@ -59,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private ImageView goBackImageView, goForwardImageView;
     private ImageView closeImageView;
-    private View view;
     private ImageView homeButtonImageView;
     private IranYekanTextView infoTextView;
     private IranYekanTextView resultTextView;
@@ -183,21 +188,18 @@ public class MainActivity extends AppCompatActivity {
 
         newCorrectedQuery = null;
 
-        System.out.println("query: " + query);
-
         long startTime = System.currentTimeMillis();
         query = correctQuerySpelling(query);
-        Toast.makeText(this, "correctQuerySpelling() time: " + (System.currentTimeMillis() - startTime) + "ms", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, Constants.CORRECT_QUERY_SPELLING_TIME_MSG + (System.currentTimeMillis() - startTime), Toast.LENGTH_LONG).show();
 
-        System.out.println("newCorrectedQuery: " + newCorrectedQuery);
         if (newCorrectedQuery != null) {
             infoTextView.setVisibility(View.VISIBLE);
-            infoTextView.setText("آیا منظور شما این بود؟   " + "\n" + query);
+            infoTextView.setText(Constants.DID_YOU_MEAN_MSG + query);
         }
 
-        String[] subQueries = query.split(" ");
+        String[] subQueries = query.split(SPACE_CHARACTER);
         if (invertedindexHashMap != null && documentsHashMap != null &&
-                subQueries.length != 0 && !subQueries[0].trim().equals("")) {
+                subQueries.length != ZERO && !subQueries[ZERO].trim().equals(EMPTY_STR)) {
             List<DocIdWithFrequency> commonDocIdsWithFrequency = invertedindexHashMap.get(subQueries[0]);
             if (commonDocIdsWithFrequency != null) {
                 for (int i = 1; i < subQueries.length; i++) {
@@ -205,11 +207,9 @@ public class MainActivity extends AppCompatActivity {
                     commonDocIdsWithFrequency = extractCommonList(commonDocIdsWithFrequency, list2);
                 }
 
-                System.out.println("commonDocIds.size(): " + commonDocIdsWithFrequency.size());
-                if (commonDocIdsWithFrequency.size() == 0) {
+                if (commonDocIdsWithFrequency.size() == ZERO) {
                     infoTextView.setVisibility(View.VISIBLE);
-                    infoTextView.setText("نتیجه ای یافت نشد!");
-                    Log.e(TAG, "HEllllllllllllllllllllllllllo");
+                    infoTextView.setText(Constants.NO_RESULTS_MSG);
                     resultTextView.setVisibility(View.INVISIBLE);
                 } else {
                     commonDocIdsWithFrequency.sort((t1, t2) -> Double.compare(t2.getFrequency(), t1.getFrequency()));
@@ -218,25 +218,22 @@ public class MainActivity extends AppCompatActivity {
                         if (doc != null) {
                             String body = doc.getBody();
                             if (body.contains(query)) {
-                                int startIndex = body.indexOf(query) - 100 > 0 ?
-                                        body.indexOf(query) - 100 : 0;
-                                int endIndex = body.indexOf(query) + 100 < body.length() ?
-                                        body.indexOf(query) + 100 : body.length();
+                                int startIndex = Math.max(body.indexOf(query) - HUNDRED, ZERO);
+                                int endIndex = Math.min(body.indexOf(query) + HUNDRED, body.length());
                                 String snippet = body.substring(startIndex, endIndex);
                                 doc.setTitle(snippet.indexOf(query) + Constants.TITLE_SPLITTER
                                         + (snippet.indexOf(query) + query.length()) + Constants.TITLE_SPLITTER + doc.getTitle());
-                                doc.setBody(snippet + " ...");
+                                doc.setBody(snippet + ELLIPSIS_STR);
                             } else {
-                                for (int j = 0; j < /*subQueries.length*/ 1; j++) {
+                                for (int j = 0; j < ONE /*subQueries.length*/; j++) {
                                     if (body.contains(subQueries[j])) {
-                                        int startIndex = body.indexOf(subQueries[j]) - 100 > 0 ?
-                                                body.indexOf(subQueries[j]) - 100 : 0;
-                                        int endIndex = body.indexOf(subQueries[0]) + 100 < body.length() ?
-                                                body.indexOf(subQueries[j]) + 100 : body.length();
+                                        int startIndex = Math.max(body.indexOf(subQueries[j]) - HUNDRED, ZERO);
+                                        int endIndex = body.indexOf(subQueries[ZERO]) + HUNDRED < body.length() ?
+                                                body.indexOf(subQueries[j]) + HUNDRED : body.length();
                                         String snippet = body.substring(startIndex, endIndex);
                                         doc.setTitle(snippet.indexOf(query) + Constants.TITLE_SPLITTER
                                                 + (snippet.indexOf(query) + query.length()) + Constants.TITLE_SPLITTER + doc.getTitle());
-                                        doc.setBody(snippet + "...");
+                                        doc.setBody(snippet + ELLIPSIS_STR);
                                     } else {
                                         if (body.length() > 100)
                                             doc.setBody(body.substring(0, 100));
@@ -245,14 +242,14 @@ public class MainActivity extends AppCompatActivity {
                             }
                             resultDocs.add(doc);
                         } else {
-                            System.out.println("cant find any document");
+                            Log.e(MAIN_ACTIVITY_STR, Constants.CAN_NOT_FIND_ANY_DOCUMENTS_MSG);
                         }
                     }
 
                     long searchTime = (System.currentTimeMillis() - startTime);
-                    Toast.makeText(this, "search() time: " + searchTime + "ms", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, Constants.SEARCH_TIME_MSG + searchTime, Toast.LENGTH_LONG).show();
 
-                    String resultText = commonDocIdsWithFrequency.size() + " نتیجه در " + searchTime / 1000f + " ثانیه";
+                    String resultText = commonDocIdsWithFrequency.size() + Constants.RESULTS_AT_MSG + searchTime / THOUSAND + SECONDS_MSG;
                     resultTextView.setText(resultText);
 
                     //bind recyclerView
@@ -273,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void hideKeyboard() {
-        view = this.getCurrentFocus();
+        View view = this.getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             if (imm != null)
@@ -322,7 +319,7 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (vpnDialogFlag) {
             vpnDialogFlag = false;
-        }  else {
+        } else {
             if (recyclerView.getVisibility() == View.INVISIBLE) {
                 if (!onBackPressedFlag) {
                     onBackPressedFlag = true;
