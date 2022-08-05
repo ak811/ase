@@ -25,11 +25,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="166eba5c-3d63-4ded-bc87-20c6aeb6a53e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Ali.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Ali.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/Indexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/Indexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/utils/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -395,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1659695186012</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Update: Code Refactoring">
+      <created>1659698073001</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1659698073001</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Update: Resources Code Refactoring">
+      <created>1659698179804</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1659698179804</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -421,17 +434,22 @@
     <MESSAGE value="xmls addad to git" />
     <MESSAGE value="Update: Code Refactoring (MainActivity)" />
     <MESSAGE value="Update: Code Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update: Code Refactoring" />
+    <MESSAGE value="Update: Resources Code Refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update: Resources Code Refactoring" />
   </component>
   <component name="WindowStateProjectService">
     <state x="286" y="178" key="#PSD" timestamp="1659639397980">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="286" y="178" key="#PSD/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659639397980" />
-    <state x="342" y="20" key="CommitChangelistDialog2" timestamp="1659695184185">
+    <state x="899" y="242" key="AndroidCreateXmlResourceDialog" timestamp="1659698614907">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="342" y="20" key="CommitChangelistDialog2/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659695184185" />
+    <state x="899" y="242" key="AndroidCreateXmlResourceDialog/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659698614907" />
+    <state x="342" y="20" key="CommitChangelistDialog2" timestamp="1659698178566">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="342" y="20" key="CommitChangelistDialog2/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659698178566" />
     <state x="647" y="330" key="Github.ShareDialog" timestamp="1659461163441">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -460,10 +478,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="277" y="77" key="SettingsEditor/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659639368426" />
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1659696268928">
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1659698191755">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659696268928" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659698191755" />
     <state x="578" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1659640168599">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

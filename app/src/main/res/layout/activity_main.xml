@@ -34,7 +34,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/appNameTextView"
         app:layout_constraintTop_toTopOf="@+id/menuLinearLayout"
-        app:srcCompat="@drawable/ic_home_gray_24dp" />
+        app:srcCompat="@drawable/ic_home_gray_24dp"
+        android:contentDescription="@string/home" />
 
     <ImageView
         android:id="@+id/goForwardImageView"
@@ -46,7 +47,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/goBackImageView"
         app:layout_constraintTop_toTopOf="@+id/goBackImageView"
-        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp" />
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
+        android:contentDescription="@string/forward" />
 
     <ImageView
         android:id="@+id/goBackImageView"
@@ -56,7 +58,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/appNameTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/appNameTextView"
-        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp"
+        android:contentDescription="@string/go_back" />
 
     <ImageView
         android:id="@+id/menuImageView"
@@ -66,7 +69,8 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_more_vert_black_24dp" />
+        app:srcCompat="@drawable/ic_more_vert_black_24dp"
+        android:contentDescription="@string/menu" />
 
     <ImageView
         android:id="@+id/googleLargeImageView"
@@ -80,7 +84,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider3"
         app:layout_constraintVertical_chainStyle="packed"
-        app:srcCompat="@drawable/google_typograpgy" />
+        app:srcCompat="@drawable/google_typograpgy"
+        android:contentDescription="@string/google" />
 
     <LinearLayout
         android:id="@+id/searchButtonLinearLayout"
@@ -117,18 +122,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/divider3" />
-
-    <!--    <ir.tapsell.sdk.bannerads.TapsellBannerView-->
-    <!--        android:id="@+id/banner1"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="64dp"-->
-    <!--        android:layout_alignParentBottom="true"-->
-    <!--        android:layout_centerHorizontal="true"-->
-    <!--        android:background="@android:color/transparent"-->
-    <!--        app:layout_constraintBottom_toBottomOf="@+id/webView"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:tapsell_banner_type="banner_320x50" />-->
 
     <View
         android:id="@+id/divider3"
@@ -172,7 +165,7 @@
         android:layout_marginStart="32dp"
         android:background="@drawable/round_rect_2_side_left"
         android:ems="10"
-        android:hint="جستجو ..."
+        android:hint="@string/searchEditText"
         android:imeOptions="actionSearch"
         android:inputType="textWebEditText"
         android:paddingStart="44dp"
@@ -189,7 +182,7 @@
         android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Google"
+        android:text="@string/google"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/menuImageView"
@@ -219,7 +212,7 @@
         android:layout_marginEnd="16dp"
         android:gravity="center"
         android:textStyle="bold"
-        android:text="2 نتیحه در 0.3 ثانیه"
+        android:text="@string/resultsTextView"
         android:textSize="24sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -235,7 +228,8 @@
         app:layout_constraintEnd_toEndOf="@+id/searchButtonLinearLayout"
         app:layout_constraintStart_toStartOf="@+id/searchButtonLinearLayout"
         app:layout_constraintTop_toTopOf="@+id/searchButtonLinearLayout"
-        app:srcCompat="@drawable/ic_search_white_24dp" />
+        app:srcCompat="@drawable/ic_search_white_24dp"
+        android:contentDescription="@string/searchButton" />
 
     <ImageView
         android:id="@+id/closeImageView"
@@ -246,7 +240,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/contentSearchEditText"
         app:layout_constraintStart_toStartOf="@+id/contentSearchEditText"
         app:layout_constraintTop_toTopOf="@+id/contentSearchEditText"
-        app:srcCompat="@drawable/ic_close_black_24dp" />
+        app:srcCompat="@drawable/ic_close_black_24dp"
+        android:contentDescription="@string/delete" />
 
-    <!--android:background="?android:attr/listDivider"-->
 </androidx.constraintlayout.widget.ConstraintLayout>

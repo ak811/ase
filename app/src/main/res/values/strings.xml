@@ -3,4 +3,13 @@
     <string name="url">URL</string>
     <string name="textView">TextView</string>
     <string name="title">title</string>
+    <string name="home">home</string>
+    <string name="forward">Forward</string>
+    <string name="go_back">Go Back</string>
+    <string name="menu">Menu</string>
+    <string name="google">Google</string>
+    <string name="searchEditText">جستجو …</string>
+    <string name="resultsTextView">2 نتیحه در 0.3 ثانیه</string>
+    <string name="searchButton">Search Button</string>
+    <string name="delete">Delete</string>
 </resources>
