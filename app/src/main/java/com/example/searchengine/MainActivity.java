@@ -41,16 +41,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import static com.example.searchengine.utils.Constants.DOC_SNIPPET_LENGTH;
 import static com.example.searchengine.utils.Constants.ELLIPSIS_STR;
 import static com.example.searchengine.utils.Constants.EMPTY_STR;
-import static com.example.searchengine.utils.Constants.HUNDRED;
-import static com.example.searchengine.utils.Constants.MAIN_ACTIVITY_STR;
-import static com.example.searchengine.utils.Constants.ONE;
+import static com.example.searchengine.utils.Constants.MILLISECOND_FRACTION;
 import static com.example.searchengine.utils.Constants.PERSIAN_CHARACTERS;
 import static com.example.searchengine.utils.Constants.SECONDS_MSG;
 import static com.example.searchengine.utils.Constants.SPACE_CHARACTER;
-import static com.example.searchengine.utils.Constants.THOUSAND;
-import static com.example.searchengine.utils.Constants.ZERO;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 @SuppressLint("UseSparseArrays")
@@ -63,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView largeGoogleImageView;
     private ImageView searchContentImageView;
     private ProgressBar progressBar;
-    private ImageView goBackImageView, goForwardImageView;
+    private ImageView goBackImageView;
     private ImageView closeImageView;
     private ImageView homeButtonImageView;
     private IranYekanTextView infoTextView;
@@ -77,9 +74,9 @@ public class MainActivity extends AppCompatActivity {
 
     private HashMap<String, List<DocIdWithFrequency>> invertedindexHashMap = new HashMap<>();
     private HashMap<Integer, Doc> documentsHashMap = new HashMap<>();
-    private HashMap<String, HashSet<String>> dictionaryHashMap = new HashMap<>();
+    private final HashMap<String, HashSet<String>> dictionaryHashMap = new HashMap<>();
 
-    private ArrayList<Doc> resultDocs = new ArrayList<>();
+    private final ArrayList<Doc> resultDocs = new ArrayList<>();
 
     private String newCorrectedQuery;
 
@@ -114,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
         searchContentImageView = findViewById(R.id.searchImageView);
         progressBar = findViewById(R.id.progressBar);
         goBackImageView = findViewById(R.id.goBackImageView);
-        goForwardImageView = findViewById(R.id.goForwardImageView);
         closeImageView = findViewById(R.id.closeImageView);
         homeButtonImageView = findViewById(R.id.homeImageView);
         infoTextView = findViewById(R.id.infoTextView);
@@ -165,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
         homeButtonImageView.setOnClickListener(v -> {
             hideWebViewAndShowOthers();
-            progressBar.setProgress(Constants.ZERO);
+            progressBar.setProgress(0);
             progressBar.setVisibility(View.INVISIBLE);
             openKeyboard();
         });
@@ -184,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void search(String query) {
 
         newCorrectedQuery = null;
@@ -199,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
 
         String[] subQueries = query.split(SPACE_CHARACTER);
         if (invertedindexHashMap != null && documentsHashMap != null &&
-                subQueries.length != ZERO && !subQueries[ZERO].trim().equals(EMPTY_STR)) {
+                subQueries.length != 0 && !subQueries[0].trim().equals(EMPTY_STR)) {
             List<DocIdWithFrequency> commonDocIdsWithFrequency = invertedindexHashMap.get(subQueries[0]);
             if (commonDocIdsWithFrequency != null) {
                 for (int i = 1; i < subQueries.length; i++) {
@@ -207,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                     commonDocIdsWithFrequency = extractCommonList(commonDocIdsWithFrequency, list2);
                 }
 
-                if (commonDocIdsWithFrequency.size() == ZERO) {
+                if (commonDocIdsWithFrequency.size() == 0) {
                     infoTextView.setVisibility(View.VISIBLE);
                     infoTextView.setText(Constants.NO_RESULTS_MSG);
                     resultTextView.setVisibility(View.INVISIBLE);
@@ -218,38 +215,38 @@ public class MainActivity extends AppCompatActivity {
                         if (doc != null) {
                             String body = doc.getBody();
                             if (body.contains(query)) {
-                                int startIndex = Math.max(body.indexOf(query) - HUNDRED, ZERO);
-                                int endIndex = Math.min(body.indexOf(query) + HUNDRED, body.length());
+                                int startIndex = Math.max(body.indexOf(query) - DOC_SNIPPET_LENGTH, 0);
+                                int endIndex = Math.min(body.indexOf(query) + DOC_SNIPPET_LENGTH, body.length());
                                 String snippet = body.substring(startIndex, endIndex);
                                 doc.setTitle(snippet.indexOf(query) + Constants.TITLE_SPLITTER
                                         + (snippet.indexOf(query) + query.length()) + Constants.TITLE_SPLITTER + doc.getTitle());
                                 doc.setBody(snippet + ELLIPSIS_STR);
                             } else {
-                                for (int j = 0; j < ONE /*subQueries.length*/; j++) {
+                                for (int j = 0; j < 1 /*subQueries.length*/; j++) {
                                     if (body.contains(subQueries[j])) {
-                                        int startIndex = Math.max(body.indexOf(subQueries[j]) - HUNDRED, ZERO);
-                                        int endIndex = body.indexOf(subQueries[ZERO]) + HUNDRED < body.length() ?
-                                                body.indexOf(subQueries[j]) + HUNDRED : body.length();
+                                        int startIndex = Math.max(body.indexOf(subQueries[j]) - DOC_SNIPPET_LENGTH, 0);
+                                        int endIndex = body.indexOf(subQueries[0]) + DOC_SNIPPET_LENGTH < body.length() ?
+                                                body.indexOf(subQueries[j]) + DOC_SNIPPET_LENGTH : body.length();
                                         String snippet = body.substring(startIndex, endIndex);
                                         doc.setTitle(snippet.indexOf(query) + Constants.TITLE_SPLITTER
                                                 + (snippet.indexOf(query) + query.length()) + Constants.TITLE_SPLITTER + doc.getTitle());
                                         doc.setBody(snippet + ELLIPSIS_STR);
                                     } else {
-                                        if (body.length() > 100)
-                                            doc.setBody(body.substring(0, 100));
+                                        if (body.length() > DOC_SNIPPET_LENGTH)
+                                            doc.setBody(body.substring(0, DOC_SNIPPET_LENGTH));
                                     }
                                 }
                             }
                             resultDocs.add(doc);
                         } else {
-                            Log.e(MAIN_ACTIVITY_STR, Constants.CAN_NOT_FIND_ANY_DOCUMENTS_MSG);
+                            Log.e(TAG, Constants.CAN_NOT_FIND_ANY_DOCUMENTS_ERR);
                         }
                     }
 
                     long searchTime = (System.currentTimeMillis() - startTime);
                     Toast.makeText(this, Constants.SEARCH_TIME_MSG + searchTime, Toast.LENGTH_LONG).show();
 
-                    String resultText = commonDocIdsWithFrequency.size() + Constants.RESULTS_AT_MSG + searchTime / THOUSAND + SECONDS_MSG;
+                    String resultText = commonDocIdsWithFrequency.size() + Constants.RESULTS_AT_MSG + searchTime / MILLISECOND_FRACTION + SECONDS_MSG;
                     resultTextView.setText(resultText);
 
                     //bind recyclerView
@@ -265,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         } else {
-            System.out.println("maps are null");
+            Log.e(TAG, Constants.MAPS_ARE_NULL_ERR);
         }
     }
 
@@ -306,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
         searchContentImageView.setVisibility(View.VISIBLE);
         searchContentEditText.setVisibility(View.VISIBLE);
         searchButtonLinearLayout.setVisibility(View.VISIBLE);
-        if (!searchContentEditText.getText().toString().trim().equals("")) {
+        if (!searchContentEditText.getText().toString().trim().equals(EMPTY_STR)) {
             closeImageView.setVisibility(View.VISIBLE);
         }
         recyclerView.setVisibility(View.INVISIBLE);
@@ -323,18 +320,18 @@ public class MainActivity extends AppCompatActivity {
             if (recyclerView.getVisibility() == View.INVISIBLE) {
                 if (!onBackPressedFlag) {
                     onBackPressedFlag = true;
-                    Toast.makeText(this, "برای خروج دوباره کلیک کنید.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, Constants.CLICK_AGAIN_TO_EXIT_MSG, Toast.LENGTH_LONG).show();
                 } else {
                     finish();
                 }
-                new Handler().postDelayed(() -> onBackPressedFlag = false, 5000);
+                new Handler().postDelayed(() -> onBackPressedFlag = false, Constants.ON_BACK_PRESSED_DELAY);
             }
             hideWebViewAndShowOthers();
             progressBar.setProgress(0);
             progressBar.setVisibility(View.INVISIBLE);
             searchContentEditText.requestFocus();
             resultDocs.clear();
-            infoTextView.setText("");
+            infoTextView.setText(EMPTY_STR);
         }
     }
 
@@ -364,7 +361,7 @@ public class MainActivity extends AppCompatActivity {
         for (String subQuery : subQueries) {
             if (invertedindexHashMap.get(subQuery) == null) {
                 String newStr = replaceSimilarLetters(subQuery);
-                Log.i(MAIN_ACTIVITY_STR, Constants.CORRECTED_QUERY_STR + newStr);
+                Log.i(TAG, Constants.CORRECTED_QUERY_STR + newStr);
                 newCorrectedQuery = newStr;
                 if (newStr == null) {
                     HashMap<String, Double> probabilityHashMap = new HashMap<>();
@@ -532,7 +529,7 @@ public class MainActivity extends AppCompatActivity {
     private String formatNumber(int number) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < 3 - String.valueOf(number).length(); i++) {
-            stringBuilder.append(ZERO);
+            stringBuilder.append(0);
         }
         return stringBuilder.append(number).toString();
     }
