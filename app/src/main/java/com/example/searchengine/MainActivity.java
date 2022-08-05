@@ -490,7 +490,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // >>> Fill dictionary from dictionary.txt
-        InputStream inputStream = getAssets().open(Constants.DICTIONARY_FILE_PATH);
+        InputStream inputStream = getAssets().open(Constants.DICTIONARY_FILE_NAME);
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             while (reader.ready()) {
                 String word = reader.readLine();
@@ -507,7 +507,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private HashMap<String, List<DocIdWithFrequency>> extractMapFromInvertedIndexFile() {
-        try (InputStream inputStream = getAssets().open(Constants.INVERTED_INDEX_FILE_PATH);
+        try (InputStream inputStream = getAssets().open(Constants.INVERTED_INDEX_FILE_NAME);
              ObjectInputStream objectInputStream = new ObjectInputStream(inputStream)) {
             return (HashMap<String, List<DocIdWithFrequency>>) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
@@ -517,7 +517,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private HashMap<Integer, Doc> extractMapFromDocumentsFile() {
-        try (InputStream inputStream = getAssets().open(Constants.DOCUMENTS_FILE_PATH);
+        try (InputStream inputStream = getAssets().open(Constants.DOCUMENTS_FILE_NAME);
              ObjectInputStream objectInputStream = new ObjectInputStream(inputStream)) {
             return (HashMap<Integer, Doc>) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {

@@ -1,6 +1,8 @@
 package com.example.searchengine;
 
 
+import android.util.Log;
+
 import org.apache.commons.text.StringEscapeUtils;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -18,19 +20,35 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.example.searchengine.utils.Constants.BINDING_HASH_MAPS_FROM_FILE_TIME_MSG;
+import static com.example.searchengine.utils.Constants.DOCS_EXTENSION;
+import static com.example.searchengine.utils.Constants.DOCS_SUFFIX_FORMAT;
+import static com.example.searchengine.utils.Constants.DOCUMENTS_FILE_PATH;
+import static com.example.searchengine.utils.Constants.DOCUMENT_COUNT_MSG;
+import static com.example.searchengine.utils.Constants.DOC_TAG_STR;
+import static com.example.searchengine.utils.Constants.GREATER_THAN_SIGN;
+import static com.example.searchengine.utils.Constants.HTML_TAG_STR;
+import static com.example.searchengine.utils.Constants.INDEX_TIME_MAG;
+import static com.example.searchengine.utils.Constants.INVERTED_INDEX_FILE_PATH;
+import static com.example.searchengine.utils.Constants.LESS_THAN_SIGN;
+import static com.example.searchengine.utils.Constants.LETTER_COUNT;
+import static com.example.searchengine.utils.Constants.PERSIAN_REGEX;
+import static com.example.searchengine.utils.Constants.SAVE_DOCUMENTS_HASH_MAP_IN_FILE_TIME_MSG;
+import static com.example.searchengine.utils.Constants.SAVE_INVERTED_INDEX_HASH_MAP_IN_FILE_TIME_MSG;
+import static com.example.searchengine.utils.Constants.SPACE_CHARACTER;
+import static com.example.searchengine.utils.Constants.SUBSTANDARD_DOCUMENT_ID;
+import static com.example.searchengine.utils.Constants.TITLE_END_TAG;
+import static com.example.searchengine.utils.Constants.TITLE_REGEX;
+import static com.example.searchengine.utils.Constants.TITLE_WEIGHT;
+import static com.example.searchengine.utils.Constants.URL_TAG_STR;
+import static com.example.searchengine.utils.Constants.WORD_COUNT;
+import static com.example.searchengine.utils.Constants.XML_FILES_PATH;
+
 public class Indexer {
-    private static HashMap<String, List<DocIdWithFrequency>> invertedindexHashMap = new HashMap<>();
-    private static HashMap<Integer, Doc> documentsHashMap = new HashMap<>();
-
-    private static String XMLsPath = "D:\\Projects\\" +
-            "Android\\Me\\1398\\SearchEngine\\app\\src\\main\\assets\\WEBIR_S";
-
+    private static final String TAG = Indexer.class.getSimpleName();
+    private static final HashMap<String, List<DocIdWithFrequency>> invertedIndexHashMap = new HashMap<>();
+    private static final HashMap<Integer, Doc> documentsHashMap = new HashMap<>();
     private static int uniqueId;
-
-    private static int BAD_DOCUMENT_ID = 485;
-
-    private static String invertedIndexFilePath = "D:\\Projects\\Android\\Me\\1398\\SearchEngine\\app\\src\\main\\assets\\inverted_index.txt";
-    private static String documentsFilePath = "D:\\Projects\\Android\\Me\\1398\\SearchEngine\\app\\src\\main\\assets\\documents.txt";
 
     public static void main(String[] args) {
         try {
@@ -40,11 +58,11 @@ public class Indexer {
         }
 
         long startTime = System.currentTimeMillis();
-        saveInvertedIndexHashMapToFile();
-        System.out.println("saveInvertedIndexHashMapToFile time: " + (System.currentTimeMillis() - startTime));
+        saveInvertedIndexHashMapInFile();
+        Log.i(TAG, SAVE_INVERTED_INDEX_HASH_MAP_IN_FILE_TIME_MSG + (System.currentTimeMillis() - startTime));
         startTime = System.currentTimeMillis();
-        saveDocumentsHashMapToFile();
-        System.out.println("saveDocumentsHashMapToFile time: " + (System.currentTimeMillis() - startTime));
+        saveDocumentsHashMapInFile();
+        Log.i(TAG, SAVE_DOCUMENTS_HASH_MAP_IN_FILE_TIME_MSG + (System.currentTimeMillis() - startTime));
     }
 
     private static void bindingHashMapsFromFile() throws JDOMException, IOException {
@@ -52,10 +70,10 @@ public class Indexer {
         int documentsCount = 0;
         int wordsCount = 0;
         int lettersCount = 0;
-        int size = Objects.requireNonNull(Objects.requireNonNull(new File(XMLsPath)).listFiles()).length;
+        int size = Objects.requireNonNull(new File(XML_FILES_PATH).listFiles()).length;
+
         for (int i = 0; i < size; i++) {
-            System.out.println("reading file " + i + " started");
-            List<Element> children = getEachFilesDocs(XMLsPath, i);
+            List<Element> children = getEachFilesDocs(i);
             for (int j = 0; j < children.size(); j++) {
                 documentsCount++;
 
@@ -63,36 +81,35 @@ public class Indexer {
                 Element docI = children.get(j);
 
                 doc.setId(uniqueId++);
-                doc.setUrl(docI.getChildText("URL"));
-                String htmlText = docI.getChildText("HTML");
+                doc.setUrl(docI.getChildText(URL_TAG_STR));
+                String htmlText = docI.getChildText(HTML_TAG_STR);
                 String htmlTextWithoutTitle = setDocTitleAndReturnHtmlWithoutTitle(doc, htmlText);
 
                 StringBuilder stringBuilder = new StringBuilder();
-                String persianRegex = "(" + "[آ-ی]" + "|" + "[ي]" + "|" + "[ك]" + ")" + "+";
-                Matcher matcher = Pattern.compile(persianRegex).matcher(htmlTextWithoutTitle);
+                Matcher matcher = Pattern.compile(PERSIAN_REGEX).matcher(htmlTextWithoutTitle);
                 int bodyWeight = 1;
-                if (doc.getId() != BAD_DOCUMENT_ID) {
+                if (doc.getId() != SUBSTANDARD_DOCUMENT_ID) {
                     while (matcher.find()) {
                         doc.setWordCount(doc.getWordCount() + 1);
 
                         String word = matcher.group();
-                        stringBuilder.append(word).append(" ");
+                        stringBuilder.append(word).append(SPACE_CHARACTER);
 
                         wordsCount++;
                         lettersCount += word.length();
 
-                        if (invertedindexHashMap.get(word) == null) {
+                        if (invertedIndexHashMap.get(word) == null) {
                             List<DocIdWithFrequency> docIdWithFrequencies = new ArrayList<>();
                             DocIdWithFrequency docIdWithFrequency = new DocIdWithFrequency(doc.getId(), bodyWeight);
                             docIdWithFrequencies.add(docIdWithFrequency);
-                            invertedindexHashMap.put(word, docIdWithFrequencies);
+                            invertedIndexHashMap.put(word, docIdWithFrequencies);
                         } else {
-                            List<DocIdWithFrequency> docIdWithFrequencies = invertedindexHashMap.get(word);
+                            List<DocIdWithFrequency> docIdWithFrequencies = invertedIndexHashMap.get(word);
                             if (docIdWithFrequencies != null)
                                 if (!isDocIdWithScoreExists(doc.getId(), docIdWithFrequencies)) {
                                     DocIdWithFrequency docIdWithFrequency = new DocIdWithFrequency(doc.getId(), bodyWeight);
                                     docIdWithFrequencies.add(docIdWithFrequency);
-                                    invertedindexHashMap.put(word, docIdWithFrequencies);
+                                    invertedIndexHashMap.put(word, docIdWithFrequencies);
                                 } else {
                                     for (int k = 0; k < docIdWithFrequencies.size(); k++) {
                                         if (docIdWithFrequencies.get(k).getDocId() == doc.getId()) {
@@ -106,8 +123,7 @@ public class Indexer {
                     }
 
                     if (doc.getTitle() != null) {
-                        Matcher titleMatcher = Pattern.compile(persianRegex).matcher(doc.getTitle());
-                        int titleWeight = 60;
+                        Matcher titleMatcher = Pattern.compile(PERSIAN_REGEX).matcher(doc.getTitle());
                         while (titleMatcher.find()) {
                             doc.setWordCount(doc.getWordCount() + 1);
 
@@ -116,23 +132,23 @@ public class Indexer {
                             wordsCount++;
                             lettersCount += word.length();
 
-                            if (invertedindexHashMap.get(word) == null) {
+                            if (invertedIndexHashMap.get(word) == null) {
                                 List<DocIdWithFrequency> docIdWithFrequencies = new ArrayList<>();
-                                DocIdWithFrequency docIdWithFrequency = new DocIdWithFrequency(doc.getId(), titleWeight);
+                                DocIdWithFrequency docIdWithFrequency = new DocIdWithFrequency(doc.getId(), TITLE_WEIGHT);
                                 docIdWithFrequencies.add(docIdWithFrequency);
-                                invertedindexHashMap.put(word, docIdWithFrequencies);
+                                invertedIndexHashMap.put(word, docIdWithFrequencies);
                             } else {
-                                List<DocIdWithFrequency> docIdWithFrequencies = invertedindexHashMap.get(word);
+                                List<DocIdWithFrequency> docIdWithFrequencies = invertedIndexHashMap.get(word);
                                 if (docIdWithFrequencies != null)
                                     if (!isDocIdWithScoreExists(doc.getId(), docIdWithFrequencies)) {
-                                        DocIdWithFrequency docIdWithFrequency = new DocIdWithFrequency(doc.getId(), titleWeight);
+                                        DocIdWithFrequency docIdWithFrequency = new DocIdWithFrequency(doc.getId(), TITLE_WEIGHT);
                                         docIdWithFrequencies.add(docIdWithFrequency);
-                                        invertedindexHashMap.put(word, docIdWithFrequencies);
+                                        invertedIndexHashMap.put(word, docIdWithFrequencies);
                                     } else {
                                         for (int k = 0; k < docIdWithFrequencies.size(); k++) {
                                             if (docIdWithFrequencies.get(k).getDocId() == doc.getId()) {
                                                 docIdWithFrequencies.get(k)
-                                                        .setFrequency(docIdWithFrequencies.get(k).getFrequency() + titleWeight);
+                                                        .setFrequency(docIdWithFrequencies.get(k).getFrequency() + TITLE_WEIGHT);
                                                 break;
                                             }
                                         }
@@ -146,82 +162,72 @@ public class Indexer {
                 }
             }
         }
-        System.out.println("bindingHashMapsFromFile time: " + (System.currentTimeMillis() - startTime));
 
-        System.out.println("documentsCount= " + documentsCount);
-        System.out.println("wordsCount= " + wordsCount);
-        System.out.println("lettersCount= " + lettersCount);
-        System.out.println("invertedindexHashMap.size(): " + invertedindexHashMap.size());
+        Log.i(TAG, BINDING_HASH_MAPS_FROM_FILE_TIME_MSG + (System.currentTimeMillis() - startTime));
+        Log.i(TAG, DOCUMENT_COUNT_MSG + documentsCount);
+        Log.i(TAG, WORD_COUNT + wordsCount);
+        Log.i(TAG, LETTER_COUNT + lettersCount);
 
         startTime = System.currentTimeMillis();
-        for (HashMap.Entry<String, List<DocIdWithFrequency>> entry : invertedindexHashMap.entrySet()) {
+        for (HashMap.Entry<String, List<DocIdWithFrequency>> entry : invertedIndexHashMap.entrySet()) {
             List<DocIdWithFrequency> list = entry.getValue();
             for (int i = 0; i < list.size(); i++) {
                 DocIdWithFrequency docIdWithFrequency = list.get(i);
                 Doc doc = documentsHashMap.get(docIdWithFrequency.getDocId());
                 if (doc != null) {
-                    double score = (Math.log10(docIdWithFrequency.getFrequency() /*/ (double) doc.getWordCount()*/)
+                    double score = (Math.log10(docIdWithFrequency.getFrequency())
                             * Math.log10(documentsCount / (double) list.size()));
                     list.get(i).setFrequency(score);
                 }
             }
         }
-        System.out.println("index time: " + (System.currentTimeMillis() - startTime));
+        Log.i(TAG, INDEX_TIME_MAG + (System.currentTimeMillis() - startTime));
     }
 
-    private static void saveDocumentsHashMapToFile() {
-        System.out.println("start saveDocumentsHashMapToFile");
-        File textFile = new File(documentsFilePath);
+    private static void saveDocumentsHashMapInFile() {
+        File textFile = new File(DOCUMENTS_FILE_PATH);
         try (FileOutputStream fileOutputStream = new FileOutputStream(textFile);
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
             objectOutputStream.writeObject(documentsHashMap);
         } catch (IOException e) {
-            System.out.println("catch");
             e.printStackTrace();
         }
-        System.out.println("end saveDocumentsHashMapToFile");
     }
 
-    private static void saveInvertedIndexHashMapToFile() {
-        System.out.println("start saveInvertedindexHashMapToFile");
-        File file = new File(invertedIndexFilePath);
+    private static void saveInvertedIndexHashMapInFile() {
+        File file = new File(INVERTED_INDEX_FILE_PATH);
         try (FileOutputStream fileOutputStream = new FileOutputStream(file);
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
-            objectOutputStream.writeObject(invertedindexHashMap);
-            System.out.println("end saveInvertedindexHashMapToFile\n");
+            objectOutputStream.writeObject(invertedIndexHashMap);
         } catch (IOException e) {
-            System.out.println("catch");
             e.printStackTrace();
         }
     }
 
-    private static List<Element> getEachFilesDocs(String pathname, int i) throws
+    private static List<Element> getEachFilesDocs(int i) throws
             JDOMException, IOException {
         SAXBuilder saxBuilder = new SAXBuilder();
-        File file = new File(pathname + "/" + "WebIR-" + formatNumber(i + 1) + ".xml");
+        File file = new File(XML_FILES_PATH + DOCS_SUFFIX_FORMAT + formatNumber(i + 1) + DOCS_EXTENSION);
         Document document = saxBuilder.build(file);
         Element rootElement = document.getRootElement();
-        return rootElement.getChildren("DOC");
+        return rootElement.getChildren(DOC_TAG_STR);
     }
 
     private static String formatNumber(int number) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < 3 - String.valueOf(number).length(); i++) {
-            stringBuilder.append("0");
+            stringBuilder.append(0);
         }
         return stringBuilder.append(number).toString();
     }
 
     private static String setDocTitleAndReturnHtmlWithoutTitle(Doc doc, String htmlText) {
-        String findTitleRegex = "<title>.*</title>";
-        Matcher matcher = Pattern.compile(findTitleRegex).matcher(htmlText);
+        Matcher matcher = Pattern.compile(TITLE_REGEX).matcher(htmlText);
         if (matcher.find()) {
             String scope = matcher.group();
-            String greaterThanSign = ">";
-            String lessThanSign = "<";
-            doc.setTitle(StringEscapeUtils.unescapeHtml4(scope.substring(scope.indexOf(greaterThanSign) +
-                    greaterThanSign.length(), scope.lastIndexOf(lessThanSign))));
-            return htmlText.substring(scope.lastIndexOf(lessThanSign) + "</title>".length());
+            doc.setTitle(StringEscapeUtils.unescapeHtml4(scope.substring(scope.indexOf(GREATER_THAN_SIGN) +
+                    GREATER_THAN_SIGN.length(), scope.lastIndexOf(LESS_THAN_SIGN))));
+            return htmlText.substring(scope.lastIndexOf(LESS_THAN_SIGN) + TITLE_END_TAG.length());
         }
         return htmlText;
     }
