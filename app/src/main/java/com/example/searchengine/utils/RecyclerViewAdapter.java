@@ -10,20 +10,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.searchengine.Doc;
 import com.example.searchengine.R;
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
+
+import static com.example.searchengine.utils.Constants.DOC_TITLE_LENGTH_LIMIT;
+
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-    private Context context;
-    private ArrayList<Doc> docs;
+    private final Context context;
+    private final ArrayList<Doc> docs;
 
     public RecyclerViewAdapter(Context context, ArrayList<Doc> docs) {
         this.context = context;
@@ -40,15 +42,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Typeface tf = Typeface.createFromAsset(context.getAssets(),
-                "fonts/IRANSansRegular.ttf");
+                Constants.APP_FONT);
 
         int startIndex = 0;
         int endIndex = 0;
         String docTitle = docs.get(position).getTitle();
         String[] docTitleParts = docTitle.split(Constants.TITLE_SPLITTER);
         if (docTitleParts.length > 1) {
-            startIndex = Integer.valueOf(docTitleParts[0]);
-            endIndex = Integer.valueOf(docTitleParts[1]);
+            startIndex = Integer.parseInt(docTitleParts[0]);
+            endIndex = Integer.parseInt(docTitleParts[1]);
             docs.get(position).setTitle(docTitleParts[2]);
         }
 
@@ -56,8 +58,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         str.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD),
                 startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        if (docs.get(position).getTitle().length() > 40) {
-            docs.get(position).setTitle(docs.get(position).getTitle().substring(0, 40) + " ...");
+        if (docs.get(position).getTitle().length() > DOC_TITLE_LENGTH_LIMIT) {
+            docs.get(position).setTitle(docs.get(position).getTitle().substring(0, DOC_TITLE_LENGTH_LIMIT) + Constants.ELLIPSIS_STR);
         }
 
         holder.title.setText(docs.get(position).getTitle());
@@ -66,11 +68,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.title.setTypeface(tf, Typeface.BOLD);
         holder.url.setTypeface(tf, Typeface.BOLD);
-//        holder.body.setTypeface(tf, Typeface.BOLD);
-
-//        // make url behaves as link
-//        holder.url.setMovementMethod(LinkMovementMethod.getInstance());
-//        holder.url.setTextColor(Color.BLACK);
     }
 
     @Override

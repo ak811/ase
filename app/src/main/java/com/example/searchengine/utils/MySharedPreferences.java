@@ -6,8 +6,8 @@ import android.content.SharedPreferences;
 
 public class MySharedPreferences {
     private static MySharedPreferences mySharedPreferences;
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor prefsEditor;
+    private final SharedPreferences sharedPreferences;
+    private final SharedPreferences.Editor prefsEditor;
 
     public static MySharedPreferences getInstance(Context context) {
         if (mySharedPreferences == null) {

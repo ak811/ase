@@ -24,11 +24,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="166eba5c-3d63-4ded-bc87-20c6aeb6a53e" name="Default Changelist" comment="Update: Code Refactoring (MainActivity)">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/MainActivity.java" afterDir="false" />
+    <list default="true" id="166eba5c-3d63-4ded-bc87-20c6aeb6a53e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/Indexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/Indexer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/utils/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/utils/MySharedPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/utils/MySharedPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/utils/MySpinnerArrayAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/utils/MySpinnerArrayAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/utils/RecyclerViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/searchengine/utils/RecyclerViewAdapter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -380,7 +381,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659641356833</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Update: Code Refactoring">
+      <created>1659694520196</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1659694520196</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -405,17 +413,18 @@
     <MESSAGE value="some changes occurred" />
     <MESSAGE value="xmls addad to git" />
     <MESSAGE value="Update: Code Refactoring (MainActivity)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update: Code Refactoring (MainActivity)" />
+    <MESSAGE value="Update: Code Refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update: Code Refactoring" />
   </component>
   <component name="WindowStateProjectService">
     <state x="286" y="178" key="#PSD" timestamp="1659639397980">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="286" y="178" key="#PSD/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659639397980" />
-    <state x="342" y="20" key="CommitChangelistDialog2" timestamp="1659694341340">
+    <state x="342" y="20" key="CommitChangelistDialog2" timestamp="1659694518143">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="342" y="20" key="CommitChangelistDialog2/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659694341340" />
+    <state x="342" y="20" key="CommitChangelistDialog2/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659694518143" />
     <state x="647" y="330" key="Github.ShareDialog" timestamp="1659461163441">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -444,14 +453,18 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="277" y="77" key="SettingsEditor/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659639368426" />
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1659694316382">
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1659694528062">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659694316382" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659694528062" />
     <state x="578" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1659640168599">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="578" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659640168599" />
+    <state x="93" y="93" width="1350" height="678" key="dock-window-1" timestamp="1659695123240">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="93" y="93" width="1350" height="678" key="dock-window-1/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659695123240" />
     <state x="475" y="165" width="586" height="592" key="find.popup" timestamp="1659640784289">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -460,5 +473,9 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="461" y="221" key="git4idea.merge.GitPullDialog/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659640164656" />
+    <state x="431" y="181" key="search.everywhere.popup" timestamp="1659694523958">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="431" y="181" key="search.everywhere.popup/0.0.1536.864/-1360.0.1360.768@0.0.1536.864" timestamp="1659694523958" />
   </component>
 </project>

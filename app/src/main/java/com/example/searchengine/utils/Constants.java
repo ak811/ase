@@ -37,6 +37,7 @@ public class Constants {
 
     public static final float MILLISECOND_FRACTION = 1000f;
     public static final int DOC_SNIPPET_LENGTH = 100;
+    public static final int DOC_TITLE_LENGTH_LIMIT = 40;
     public static final int ON_BACK_PRESSED_DELAY = 5000;
 
     public static final int TEST_INPUT_1 = 1;

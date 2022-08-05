@@ -9,10 +9,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
+@SuppressWarnings("NullableProblems")
 public class MySpinnerArrayAdapter extends ArrayAdapter<String> {
 
-    private Typeface font = Typeface.createFromAsset(getContext().getAssets(),
-            "fonts/IRANSansRegular.ttf");
+    private final Typeface font = Typeface.createFromAsset(getContext().getAssets(),
+            Constants.APP_FONT);
 
     public MySpinnerArrayAdapter(Context context, int resource, List<String> items) {
         super(context, resource, items);
