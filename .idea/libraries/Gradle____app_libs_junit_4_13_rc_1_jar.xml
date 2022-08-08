@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: ./app/libs/junit-4.13-rc-1.jar">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/libs/junit-4.13-rc-1.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
