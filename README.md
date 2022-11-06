@@ -8,7 +8,7 @@
 Ase is a local search engine written in the Java programming language and based on Android SDK. You can use Ase as a codebase for developing your own search engine.
 <br>
 <br>
-With Ase you can do the following:
+With Ase, you can do the following:
 <br>• ‌ Parsing
 <br>• ‌ Indexing (TF-IDF Algorithm)
 <br>• ‌ Repository Storing
